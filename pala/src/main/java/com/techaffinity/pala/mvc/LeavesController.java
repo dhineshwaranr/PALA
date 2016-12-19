@@ -19,7 +19,7 @@ public class LeavesController {
 	@Autowired
 	private LeaveTypeService leaveService;
 	
-	@RequestMapping("/leaves")
+	@RequestMapping(value="/leavesinfo", method=RequestMethod.GET)
 	public String leaves(){
 		return "success";
 	}

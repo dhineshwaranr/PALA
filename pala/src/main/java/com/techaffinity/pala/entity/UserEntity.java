@@ -1,6 +1,7 @@
 package com.techaffinity.pala.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,16 +33,18 @@ public class UserEntity{
 	private String password;
 	@NotNull
 	private String conformPassword;
+	
 	@NotNull
 	private boolean isEnabled;
 	@NotNull
 	private boolean isActive;
 	
-	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private List<RolesEntity> roles;
+	//@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	//@JoinTable(name="UserRole",joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name="roleId"))
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	public List<RolesEntity> role;
 	
-	
-	
+		
 	public int getId() {
 		return id;
 	}
@@ -76,13 +82,12 @@ public class UserEntity{
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public List<RolesEntity> getRoles() {
-		return roles;
+		
+	public List<RolesEntity> getRole() {
+		return role;
 	}
-	public void setRoles(List<RolesEntity> roles) {
-		this.roles = roles;
+	public void setRole(List<RolesEntity> role) {
+		this.role = role;
 	}
-	
-	
 	
 }

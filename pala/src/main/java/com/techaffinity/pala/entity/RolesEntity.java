@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,6 +30,7 @@ public class RolesEntity{
 	//private DateTime modifiedDate;
 	@NotNull
 	private String roleName;
+
 	@NotNull
 	private String roleCode;
 	
@@ -35,8 +38,10 @@ public class RolesEntity{
     @JoinColumn
 	private UserEntity createdBy;
 	
-	@ManyToMany(mappedBy="roles", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<UserEntity> users;
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@JoinTable(name="UserRole",joinColumns = @JoinColumn(name = "roleId"),inverseJoinColumns = @JoinColumn(name="userId"))
+    @ManyToMany(mappedBy="role",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    private List<UserEntity> user;
 	
 	public int getId() {
 		return id;
@@ -70,13 +75,14 @@ public class RolesEntity{
 		this.createdBy = createdBy;
 	}
 
-	public List<UserEntity> getUsers() {
-		return users;
+	public List<UserEntity> getUser() {
+		return user;
 	}
 
-	public void setUsers(List<UserEntity> users) {
-		this.users = users;
+	public void setUser(List<UserEntity> user) {
+		this.user = user;
 	}
+
 	
 	
 }
