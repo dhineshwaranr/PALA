@@ -1,0 +1,5 @@
+#Sql Query
+#INSERT INTO pala.user (id, user_name, password,conform_password, first_name, last_name, email, is_enabled,is_active, last_password_reset_date) VALUES (4, 'usertwo', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'user', 'user', 'enabled@user.com', 1,1,parse_date_time('01-01-2016', 'dd-MM-yyyy'));
+#INSERT INTO pala.authority (id, name) VALUES (3, 'ROLE_USER');
+#INSERT INTO pala.user_authorities (user_id, authorities_id) VALUES (1, 1);
+#http://patorjk.com/software/taag/#p=display&h=2&v=3&f=X99&t=Pala

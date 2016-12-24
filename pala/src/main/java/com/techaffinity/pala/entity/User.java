@@ -1,5 +1,6 @@
 package com.techaffinity.pala.entity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -20,11 +21,11 @@ import org.joda.time.DateTime;
 
 @Entity
 @Table(name="user")
-public class UserEntity{
+public class User{
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	//private DateTime createdDate;
 	//private DateTime modifiedDate;
 	@NotNull
@@ -34,21 +35,52 @@ public class UserEntity{
 	@NotNull
 	private String conformPassword;
 	
-	@NotNull
+	private String firstName;
+	private String lastName;
+	private String email;
+	private Date lastPasswordResetDate;
+	
+	@Column(nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean isEnabled;
-	@NotNull
+	@Column(nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean isActive;
 	
 	//@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	//@JoinTable(name="UserRole",joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name="roleId"))
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	public List<RolesEntity> role;
+	public List<Authority> authorities;
+	
 	
 		
-	public int getId() {
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Date getLastPasswordResetDate() {
+		return lastPasswordResetDate;
+	}
+	public void setLastPasswordResetDate(Date lastPasswordResetDate) {
+		this.lastPasswordResetDate = lastPasswordResetDate;
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -82,12 +114,13 @@ public class UserEntity{
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	public List<Authority> getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
+	}
 		
-	public List<RolesEntity> getRole() {
-		return role;
-	}
-	public void setRole(List<RolesEntity> role) {
-		this.role = role;
-	}
+	
 	
 }

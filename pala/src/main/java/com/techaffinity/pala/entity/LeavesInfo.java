@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="leaveInfo")
-public class LeavesInfoEntity {
+public class LeavesInfo {
 
 	@Id
 	@GeneratedValue
@@ -27,7 +27,7 @@ public class LeavesInfoEntity {
 
 	@OneToOne
 	@JoinColumn
-	private UserEntity user;
+	private User user;
 	
 	public int getId() {
 		return id;
@@ -59,6 +59,14 @@ public class LeavesInfoEntity {
 
 	public void setTotalCompOffCount(int totalCompOffCount) {
 		this.totalCompOffCount = totalCompOffCount;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

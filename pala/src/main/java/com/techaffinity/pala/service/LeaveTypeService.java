@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.techaffinity.pala.entity.LeaveTypeEntity;
+import com.techaffinity.pala.entity.LeaveType;
 import com.techaffinity.pala.repository.LeaveTypeRepository;
 
 @Service
@@ -14,14 +14,14 @@ public class LeaveTypeService {
 	@Autowired
 	private LeaveTypeRepository leaveRepo;
 	
-	public String addLeaveType(LeaveTypeEntity leaveType){
-		leaveRepo.save(leaveType);
-		return "success";
+	public LeaveType addLeaveType(LeaveType leaveType){
+		LeaveType savedLeaveType = leaveRepo.save(leaveType);
+		return savedLeaveType;
 	}
 	
-	public List<LeaveTypeEntity> getAllLeaveTypes(){
-		List<LeaveTypeEntity> lt = leaveRepo.findAll();
-		return lt;
+	public List<LeaveType> getAllLeaveTypes(){
+		List<LeaveType> allLeaveType = leaveRepo.findAll();
+		return allLeaveType;
 	}
 	
 }

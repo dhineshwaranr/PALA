@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="leaveType")
-public class LeaveTypeEntity {
+public class LeaveType {
 
 	@Id
 	@GeneratedValue

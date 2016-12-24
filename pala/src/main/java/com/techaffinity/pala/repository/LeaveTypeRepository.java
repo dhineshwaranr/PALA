@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.techaffinity.pala.entity.LeaveTypeEntity;
+import com.techaffinity.pala.entity.LeaveType;
 
 @Repository
-public interface LeaveTypeRepository extends JpaRepository<LeaveTypeEntity, Integer>{
+public interface LeaveTypeRepository extends JpaRepository<LeaveType, Integer>{
 
-	public LeaveTypeEntity save(LeaveTypeEntity leave);
-	public List<LeaveTypeEntity> findAll();
+	public LeaveType save(LeaveType leave);
+	public List<LeaveType> findAll();
 	
 }
