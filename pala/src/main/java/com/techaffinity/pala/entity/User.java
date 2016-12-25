@@ -13,11 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.joda.time.DateTime;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name="user")
@@ -39,6 +42,9 @@ public class User{
 	private String lastName;
 	private String email;
 	private Date lastPasswordResetDate;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Team team;
 	
 	@Column(nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean isEnabled;
@@ -119,6 +125,12 @@ public class User{
 	}
 	public void setAuthorities(List<Authority> authorities) {
 		this.authorities = authorities;
+	}
+	public Team getTeam() {
+		return team;
+	}
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 		
 	
